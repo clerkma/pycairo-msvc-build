@@ -1,0 +1,49 @@
+CC = cl
+AR = lib
+LD = link
+CFLAGS = -nologo -utf-8 -c -O2 -Oy \
+  -DPYCAIRO_VERSION_MAJOR=1 -DPYCAIRO_VERSION_MINOR=21 -DPYCAIRO_VERSION_MICRO=0 \
+  -DCAIRO_WIN32_STATIC_BUILD -DCAIRO_NO_MUTEX \
+  -I$(PYTHON_INCLUDE) \
+  -Icairo-1.17.4/src -Ipixman-0.40.0/pixman -Izlib-1.2.12 -Ilibpng-1.6.37 -Ifreetype-2.12.0/include
+ROOT = pycairo-1.21.0/cairo
+OBJS = pycairo-bufferproxy.obj pycairo-cairomodule.obj pycairo-context.obj pycairo-device.obj pycairo-enums.obj pycairo-error.obj pycairo-font.obj pycairo-glyph.obj pycairo-matrix.obj pycairo-misc.obj pycairo-path.obj pycairo-pattern.obj pycairo-rectangle.obj pycairo-region.obj pycairo-surface.obj pycairo-textcluster.obj pycairo-textextents.obj
+
+all: $(OBJS)
+	$(LD) -nologo -dll -out:$(PYCAIRO_MOD_NAME) $(OBJS) $(PYTHON_LIB) libcairo.lib libpixman.lib libpng.lib zlib.lib
+
+pycairo-bufferproxy.obj: $(ROOT)/bufferproxy.c
+	$(CC) $(CFLAGS) -Fopycairo-bufferproxy.obj $(ROOT)/bufferproxy.c
+pycairo-cairomodule.obj: $(ROOT)/cairomodule.c
+	$(CC) $(CFLAGS) -Fopycairo-cairomodule.obj $(ROOT)/cairomodule.c
+pycairo-context.obj: $(ROOT)/context.c
+	$(CC) $(CFLAGS) -Fopycairo-context.obj $(ROOT)/context.c
+pycairo-device.obj: $(ROOT)/device.c
+	$(CC) $(CFLAGS) -Fopycairo-device.obj $(ROOT)/device.c
+pycairo-enums.obj: $(ROOT)/enums.c
+	$(CC) $(CFLAGS) -Fopycairo-enums.obj $(ROOT)/enums.c
+pycairo-error.obj: $(ROOT)/error.c
+	$(CC) $(CFLAGS) -Fopycairo-error.obj $(ROOT)/error.c
+pycairo-font.obj: $(ROOT)/font.c
+	$(CC) $(CFLAGS) -Fopycairo-font.obj $(ROOT)/font.c
+pycairo-glyph.obj: $(ROOT)/glyph.c
+	$(CC) $(CFLAGS) -Fopycairo-glyph.obj $(ROOT)/glyph.c
+pycairo-matrix.obj: $(ROOT)/matrix.c
+	$(CC) $(CFLAGS) -Fopycairo-matrix.obj $(ROOT)/matrix.c
+pycairo-misc.obj: $(ROOT)/misc.c
+	$(CC) $(CFLAGS) -Fopycairo-misc.obj $(ROOT)/misc.c
+pycairo-path.obj: $(ROOT)/path.c
+	$(CC) $(CFLAGS) -Fopycairo-path.obj $(ROOT)/path.c
+pycairo-pattern.obj: $(ROOT)/pattern.c
+	$(CC) $(CFLAGS) -Fopycairo-pattern.obj $(ROOT)/pattern.c
+pycairo-rectangle.obj: $(ROOT)/rectangle.c
+	$(CC) $(CFLAGS) -Fopycairo-rectangle.obj $(ROOT)/rectangle.c
+pycairo-region.obj: $(ROOT)/region.c
+	$(CC) $(CFLAGS) -Fopycairo-region.obj $(ROOT)/region.c
+pycairo-surface.obj: $(ROOT)/surface.c
+	$(CC) $(CFLAGS) -Fopycairo-surface.obj $(ROOT)/surface.c
+pycairo-textcluster.obj: $(ROOT)/textcluster.c
+	$(CC) $(CFLAGS) -Fopycairo-textcluster.obj $(ROOT)/textcluster.c
+pycairo-textextents.obj: $(ROOT)/textextents.c
+	$(CC) $(CFLAGS) -Fopycairo-textextents.obj $(ROOT)/textextents.c
+
