@@ -2,7 +2,7 @@ CC = cl
 AR = lib
 CFLAGS = -nologo -c -O2 -Oy
 DEPS = $(ROOT)/zlib.h $(ROOT)/zconf.h
-ROOT = ./zlib-1.2.12
+ROOT = zlib-1.2.12
 OBJS = zlib-adler32.obj zlib-compress.obj zlib-crc32.obj zlib-deflate.obj zlib-gzclose.obj zlib-gzlib.obj zlib-gzread.obj zlib-gzwrite.obj zlib-infback.obj zlib-inflate.obj zlib-inftrees.obj zlib-inffast.obj zlib-trees.obj zlib-uncompr.obj zlib-zutil.obj
 
 all: $(OBJS)
