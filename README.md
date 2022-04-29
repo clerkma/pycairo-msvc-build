@@ -6,7 +6,7 @@ Scripts on MSVC build of `pycairo`.
 * Visual Studio (tested, VS 2019)
 * Python 3.8+ (tested, Python 3.10, amd64)
 
-# build steps
+# building steps
 
 (From my enviroment)
 ```
